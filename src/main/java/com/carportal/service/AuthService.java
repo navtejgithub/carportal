@@ -50,6 +50,7 @@ public class AuthService {
 //        String encode = passwordEncoder.encode(user.getPassword());
         String encode= BCrypt.hashpw(user.getPassword(),BCrypt.gensalt(5));//advisible compared to above
         user.setPassword(encode);
+        user.setRole("USER");
         userRepository.save(user);
         return "User Created Successfully";
 

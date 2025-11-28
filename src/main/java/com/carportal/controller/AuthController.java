@@ -17,7 +17,7 @@ public class AuthController {
     }
     private AuthService authService;
 
-    @PostMapping("/signup")
+    @PostMapping("/user/signup")
     ResponseEntity<?> createUser(@RequestBody User user){
         String user1 = authService.createUser(user);
         return new ResponseEntity<>(user1,HttpStatus.CREATED);

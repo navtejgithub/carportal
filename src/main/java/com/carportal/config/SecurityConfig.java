@@ -35,12 +35,17 @@ public class SecurityConfig  {
                         // public endpoints
                 .requestMatchers("/api/v1/auth/login").permitAll()
                         // if you want signup to require JWT:
-                .requestMatchers("/api/v1/auth/signup").authenticated()
+                .requestMatchers("/api/v1/auth/user/signup")
+                                .permitAll()
+//                                .authenticated()
                         // this is optional, because anyRequest().authenticated()
                         // will already cover /api/v1/car/add
-                .requestMatchers("/api/v1/car/add").authenticated()
+                .requestMatchers("/api/v1/car")
+                                .hasRole("USER")
+//                                .anyRequest()
+//                                .authenticated()
                         // must be LAST
-                        .anyRequest()
+                                    .anyRequest()
                                   .authenticated()
                 );
 
